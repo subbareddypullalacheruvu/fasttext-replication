@@ -1,0 +1,6 @@
+data/raw/
+data/processed/*.train
+data/processed/*.test
+data/processed/*.all
+__pycache__/
+*.bin

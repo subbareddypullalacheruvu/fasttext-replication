@@ -1,0 +1,18 @@
+{
+  "ag_news": {
+    "train": 120000,
+    "test": 7600,
+    "classes": 4,
+    "avg_tokens": 45.3,
+    "min_class": 30000,
+    "max_class": 30000
+  },
+  "20ng": {
+    "train": 8769,
+    "test": 2190,
+    "classes": 20,
+    "avg_tokens": 262.0,
+    "min_class": 286,
+    "max_class": 472
+  }
+}
