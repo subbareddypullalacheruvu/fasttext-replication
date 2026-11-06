@@ -128,7 +128,7 @@ def uci():
 
 
 def rss2026():
-    """Our newly constructed 2026 headline dataset (src/collect_rss.py output).
+    """The newly constructed 2026 headline dataset (src/collect_rss.py output).
     Labels use AG News ids (1 World, 2 Sports, 3 Business, 4 Sci/Tech), so a model
     trained on AG News can be tested on it directly (temporal-shift test)."""
     path = ROOT / "data" / "rss_2026_master.csv"

@@ -1,4 +1,4 @@
-"""make_figures.py - figures for the update presentation / report (results/figures/)."""
+"""make_figures.py - figures for the report (results/figures/)."""
 import json
 
 import matplotlib

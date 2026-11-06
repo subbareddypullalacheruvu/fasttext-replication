@@ -7,7 +7,8 @@ NumPy 1.26, Linux, 2 threads.
 
 fastText results are the mean ± standard deviation over 5 seeds (0–4). Training time is
 wall-clock training time only, measured on the same machine for every model. Earlier
-Windows runs from 9 October 2026 are kept in `archive/` and agree to within 0.1 pp. The
+Windows runs from 9 October 2026 are kept in `archive/`. They agree closely: within
+0.08 pp on AG News and within 0.4 pp on 20 Newsgroups. The
 report's numbers come from `report/make_numbers.py`, so they always match these files.
 
 ## Phase 1 – replication on AG News
