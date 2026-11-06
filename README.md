@@ -1,77 +1,101 @@
-# Reproducing fastText: does the efficiency–accuracy trade-off generalise?
+# Replicating fastText (Joulin et al., 2017) on AG News and new data
 
-COMP8240 (Applications of Data Science), Macquarie University, Session 2 2026 – novel project.
-Subbareddy Pullalacheruvu (48641626).
+COMP8240 (Applications of Data Science), Macquarie University, Session 2 2026.
+Author: Subbareddy Pullalacheruvu (48641626).
 
-**Paper:** Joulin, Grave, Bojanowski & Mikolov (2017). *Bag of Tricks for Efficient Text
-Classification.* EACL 2017 (CORE A). [ACL Anthology](https://aclanthology.org/E17-2068/) ·
-[arXiv](https://arxiv.org/abs/1607.01759)
-**Code:** official [facebookresearch/fastText](https://github.com/facebookresearch/fastText)
-v0.9.2 (archived March 2024).
-**Original data:** AG News (Zhang et al., 2015).
+This repository reproduces the AG News result of *Bag of Tricks for Efficient Text
+Classification* (Joulin et al., EACL 2017) with the authors' own fastText code, and then
+tests whether its speed-versus-accuracy claim holds on data the paper never used:
 
-## Status (project update, October 2026)
+1. **20 Newsgroups**, an existing dataset with 20 classes and long documents, and
+2. **2026 RSS headlines**, a new dataset I built with the same four classes and format as
+   AG News, collected about twenty years after it.
 
-| Stage | Status |
+Results are in [`results/RESULTS.md`](results/RESULTS.md). The final report is
+[`report/final_report.pdf`](report/final_report.pdf).
+
+## Setup
+
+You need **Python 3.11**. `fasttext-wheel==0.9.2` (the authors' last release) has no
+prebuilt wheels for Python 3.12+ and fails to build on 3.13.
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+On Windows, building `fasttext-wheel` needs the *Microsoft C++ Build Tools*. `numpy<2` is
+pinned because fastText 0.9.2's Python binding breaks with NumPy 2.
+
+## Reproduce everything
+
+Run these from the repository root. On a laptop CPU the whole pipeline takes about 15 minutes.
+
+```bash
+python src/download_data.py               # AG News + 20 Newsgroups -> data/raw/
+python src/preprocess.py all              # -> data/processed/*.train / *.test / *.all
+python src/run_experiments.py --seeds 5 --threads 2 --baselines   # Table: AG News, 20NG, 2026 in-domain
+python src/epoch_sweep.py --dataset 20ng --seeds 5                # why the paper's settings fail on 20NG
+python src/transfer_test.py --seeds 5                             # train on AG News, test on 2026 headlines
+python src/error_analysis.py ag_news_bigram                       # error examples -> results/errors_*.md
+python src/error_analysis.py 20ng_epoch25
+python src/error_analysis.py agnews_to_rss2026
+python src/make_figures.py                                        # -> results/figures/
+```
+
+All runs append to `results/results.json`. fastText uses seeds 0 to 4 and 2 threads, and
+results are the mean ± standard deviation over the 5 runs.
+fastText trains with several threads (Hogwild SGD), so a run is **not bit-identical** even
+with a fixed seed. Expect differences of a few tenths of a point. For this reason the exact
+predictions that the LLM judge assessed are frozen in
+`results/llm_judge/judged_predictions_seed0.tsv`, and rerunning `transfer_test.py` does not
+change the judge results.
+
+## The 2026 RSS headline dataset
+
+| File | What it is |
 |---|---|
-| Replicate AG News with the authors' code and settings | ✅ done – 92.33% (9 runs) vs 92.5% in the paper |
-| Existing dataset not used in the paper: 20 Newsgroups | ✅ first results |
-| Comparison model (TF-IDF + logistic regression) | ✅ AG News, 20 Newsgroups |
-| New constructed dataset: 2026 RSS news headlines | 🔄 548 collected, 508 usable, 90% label agreement; collection ongoing |
-| Existing dataset: UCI News Aggregator | ⏳ preprocessing ready, needs `newsCorpora.csv` |
-| Temporal-shift test (train on AG News, test on 2026 headlines) | ⏳ script ready (`src/transfer_test.py`) |
+| `data/rss_2026_master.csv` | All 548 collected items (id, source, section, label, title, lead sentence, link, publication and collection time, `conflict` flag) |
+| `data/labelling_guideline.md` | The rules each label is checked against |
+| `data/spotcheck_sample.csv` | The 50-item manual spot-check (45/50 = 90% agreement) |
+| `results/llm_judge/` | LLM-as-judge prompt, verdicts on the transfer-test errors, and a human check of 30 of them |
 
-Full numbers and discussion: [`results/RESULTS.md`](results/RESULTS.md).
+Each item is a headline plus its lead sentence from one of 15 public RSS section feeds
+(BBC, The Guardian, The New York Times, ESPN), collected on 9 October 2026. Its label is the
+outlet's own section, mapped to World, Sports, Business or Sci/Tech. The 40 stories that
+appeared under two different sections are flagged `conflict=1` and left out, which leaves
+508 usable items. The dataset is frozen at this version for the report.
+
+```bash
+python src/collect_rss.py collect     # fetch feeds again, appending only new items
+python src/collect_rss.py stats       # counts per class / source / collection run
+python src/collect_rss.py sample -n 50   # new spot-check sheet
+```
+
+**Copyright note.** Headlines and lead sentences belong to the publishers. They are
+included here only for non-commercial research and teaching, to make the results
+reproducible. Each row keeps its source link. See the ethics section of the report.
 
 ## Repository layout
 
 ```
 src/
-  collect_rss.py      collects the 2026 headline dataset from 15 public RSS feeds
-  preprocess.py       raw data -> fastText format, using the authors' normalize_text rules
-  run_experiments.py  fastText + TF-IDF baseline over several seeds; accuracy AND train time
-  epoch_sweep.py      sensitivity of 20 Newsgroups to epochs / learning rate
-  transfer_test.py    train on AG News (2004), test on 2026 headlines
-  error_analysis.py   confusion matrix + real misclassified examples
-  make_figures.py     figures in results/figures/
-data/
-  rss_2026_master.csv     the new dataset: one row per headline, with source, section,
-                          link and collection timestamp
-  spotcheck_sample.csv    50-item manual label check (Y/N column)
-  labelling_guideline.md  category rules used for the manual check
-  processed/              dataset statistics (fastText-format files are not committed)
-results/                  results.json, prediction files, error analyses, figures
+  download_data.py     fetch raw datasets
+  preprocess.py        Python port of the authors' normalize_text; writes fastText format
+  run_experiments.py   fastText + TF-IDF/LogReg baseline, multi-seed, timing
+  epoch_sweep.py       epochs x learning-rate sweep (20NG)
+  transfer_test.py     AG News -> 2026 headlines temporal-shift test
+  error_analysis.py    misclassified examples per class pair
+  make_figures.py      figures for the report
+  collect_rss.py       builds the 2026 dataset from RSS feeds
+data/                  new dataset, guideline, spot-check (raw downloads are git-ignored)
+results/               results.json, RESULTS.md, predictions, error lists, figures
+results/archive/       earlier Windows runs (9 Oct 2026), kept for provenance
+report/                LaTeX source and PDF of the final report
 ```
 
-`data/raw/` (AG News, 20 Newsgroups) is not committed because these are large public
-datasets – see below for where to get them.
+## Source
 
-## How to reproduce
-
-```bash
-pip install -r requirements.txt
-
-# 1. data – save into data/raw/
-#    AG News -> ag_train.csv, ag_test.csv
-#      https://github.com/mhjabreel/CharCnn_Keras/tree/master/data/ag_news_csv
-#    20 Newsgroups (bydate training portion, 11,314 posts) -> newsgroups.json
-#      https://raw.githubusercontent.com/selva86/datasets/master/newsgroups.json
-#    UCI News Aggregator -> newsCorpora.csv
-#      https://archive.ics.uci.edu/dataset/359/news+aggregator
-python src/collect_rss.py collect        # repeat over several days; duplicates are skipped
-python src/collect_rss.py stats
-python src/preprocess.py all
-
-# 2. experiments
-python src/run_experiments.py --exp ag_news_bigram 20ng_paper_cfg 20ng_epoch25 --seeds 3 --baselines
-python src/epoch_sweep.py --dataset 20ng
-python src/transfer_test.py
-python src/error_analysis.py ag_news_bigram
-python src/make_figures.py
-```
-
-## Environment
-
-Windows 11 · Python 3.11 · `fasttext-wheel` 0.9.2 (Python bindings for the official
-fastText C++ code) · CPU only. Setting up on Windows required installing the Microsoft C++
-build tools and pinning `numpy<2` for compatibility with the 0.9.2 bindings.
+Official code: <https://github.com/facebookresearch/fastText> (archived March 2024, v0.9.2).
+Paper: <https://aclanthology.org/E17-2068/>.

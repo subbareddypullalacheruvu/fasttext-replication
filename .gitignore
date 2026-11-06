@@ -4,3 +4,12 @@ data/processed/*.test
 data/processed/*.all
 __pycache__/
 *.bin
+.venv/
+report/*.aux
+report/*.log
+report/*.bbl
+report/*.blg
+report/*.fls
+report/*.fdb_latexmk
+report/*.out
+report/build.log
