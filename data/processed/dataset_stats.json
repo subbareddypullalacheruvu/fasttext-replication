@@ -14,5 +14,13 @@
     "avg_tokens": 262.0,
     "min_class": 286,
     "max_class": 472
+  },
+  "rss2026": {
+    "train": 407,
+    "test": 101,
+    "classes": 4,
+    "avg_tokens": 42.7,
+    "min_class": 85,
+    "max_class": 112
   }
 }

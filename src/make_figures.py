@@ -67,4 +67,40 @@ if sweep_path.exists():
                  color=INK, fontsize=12)
     fig.tight_layout()
     fig.savefig(OUT / "20ng_epoch_sweep.png", dpi=200)
+
+# ---- Figure 3: confusion matrices, AG News test vs 2026 headlines (same AG News model)
+def confusion(path):
+    import csv
+    names = ["World", "Sports", "Business", "Sci/Tech"]
+    m = [[0] * 4 for _ in range(4)]
+    with open(path, encoding="utf-8") as f:
+        for r in csv.DictReader(f, delimiter="\t"):
+            g, p = r["gold"].replace("__label__", ""), r["pred"].replace("__label__", "")
+            m[int(g) - 1][int(p) - 1] += 1
+    return names, [[c / max(sum(row), 1) * 100 for c in row] for row in m]
+
+
+cm_files = [("AG News test (2004)", RES / "pred_ag_news_bigram.tsv"),
+            ("2026 RSS headlines", RES / "pred_agnews_to_rss2026.tsv")]
+if all(p.exists() for _, p in cm_files):
+    fig, axes = plt.subplots(1, 2, figsize=(8.6, 3.9))
+    for ax, (title, path) in zip(axes, cm_files):
+        names, cm = confusion(path)
+        ax.imshow(cm, cmap="Blues", vmin=0, vmax=100)
+        for i in range(4):
+            for j in range(4):
+                ax.text(j, i, f"{cm[i][j]:.0f}", ha="center", va="center", fontsize=10,
+                        color="white" if cm[i][j] > 55 else INK)
+        ax.set_xticks(range(4), names, rotation=30, ha="right")
+        ax.set_yticks(range(4), names)
+        ax.set_xlabel("Predicted")
+        ax.set_title(title, loc="left", color=INK, fontsize=11)
+        for s in ax.spines.values():
+            s.set_visible(False)
+    axes[0].set_ylabel("True class")
+    fig.suptitle("Same AG News model: row-normalised confusion (%)", x=0.02, ha="left",
+                 color=INK, fontsize=12)
+    fig.tight_layout()
+    fig.savefig(OUT / "confusion_agnews_vs_2026.png", dpi=200)
+
 print("figures in", OUT)

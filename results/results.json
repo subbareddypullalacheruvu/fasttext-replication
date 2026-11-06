@@ -1,8 +1,8 @@
 {
   "_environment": {
-    "platform": "Windows-10-10.0.26200-SP0",
-    "threads": 4,
-    "python": "3.11.2"
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "threads": 2,
+    "python": "3.11.18"
   },
   "ag_news_bigram": {
     "model": "fastText",
@@ -16,47 +16,183 @@
       "epoch": 5
     },
     "paper_accuracy": 92.5,
-    "n_runs": 1,
+    "n_runs": 5,
     "acc_mean": 92.34,
-    "acc_sd": 0.0,
-    "acc_min": 92.34,
-    "acc_max": 92.34,
-    "train_s_mean": 8.92,
-    "macro_f1_mean": 92.34,
+    "acc_sd": 0.1,
+    "acc_min": 92.22,
+    "acc_max": 92.45,
+    "train_s_mean": 4.78,
+    "macro_f1_mean": 92.33,
     "runs": [
       {
-        "accuracy": 92.34,
-        "macro_f1": 92.34,
+        "accuracy": 92.25,
+        "macro_f1": 92.24,
         "per_class_recall": {
-          "1": 0.9205,
-          "2": 0.9768,
-          "3": 0.8968,
-          "4": 0.8995
+          "1": 0.9226,
+          "2": 0.9789,
+          "3": 0.8937,
+          "4": 0.8947
         },
         "top_confusions": [
+          [
+            "3->4",
+            133
+          ],
+          [
+            "4->3",
+            129
+          ],
+          [
+            "1->3",
+            63
+          ],
+          [
+            "3->1",
+            57
+          ],
+          [
+            "4->1",
+            49
+          ]
+        ],
+        "seed": 0,
+        "train_seconds": 5.28
+      },
+      {
+        "accuracy": 92.42,
+        "macro_f1": 92.41,
+        "per_class_recall": {
+          "1": 0.9232,
+          "2": 0.9805,
+          "3": 0.8911,
+          "4": 0.9021
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            137
+          ],
+          [
+            "4->3",
+            117
+          ],
+          [
+            "1->3",
+            59
+          ],
+          [
+            "3->1",
+            56
+          ],
+          [
+            "4->1",
+            50
+          ]
+        ],
+        "seed": 1,
+        "train_seconds": 4.71
+      },
+      {
+        "accuracy": 92.45,
+        "macro_f1": 92.43,
+        "per_class_recall": {
+          "1": 0.9221,
+          "2": 0.9821,
+          "3": 0.8937,
+          "4": 0.9
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            133
+          ],
+          [
+            "4->3",
+            121
+          ],
+          [
+            "1->3",
+            64
+          ],
+          [
+            "3->1",
+            56
+          ],
+          [
+            "4->1",
+            47
+          ]
+        ],
+        "seed": 2,
+        "train_seconds": 4.82
+      },
+      {
+        "accuracy": 92.38,
+        "macro_f1": 92.37,
+        "per_class_recall": {
+          "1": 0.9226,
+          "2": 0.98,
+          "3": 0.8953,
+          "4": 0.8974
+        },
+        "top_confusions": [
+          [
+            "4->3",
+            128
+          ],
+          [
+            "3->4",
+            128
+          ],
+          [
+            "1->3",
+            62
+          ],
+          [
+            "3->1",
+            58
+          ],
+          [
+            "4->1",
+            47
+          ]
+        ],
+        "seed": 3,
+        "train_seconds": 4.53
+      },
+      {
+        "accuracy": 92.22,
+        "macro_f1": 92.21,
+        "per_class_recall": {
+          "1": 0.9211,
+          "2": 0.9789,
+          "3": 0.8926,
+          "4": 0.8963
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            135
+          ],
           [
             "4->3",
             132
           ],
           [
-            "3->4",
-            132
-          ],
-          [
             "1->3",
-            67
+            66
           ],
           [
             "3->1",
-            51
+            56
           ],
           [
-            "1->4",
-            47
+            "4->1",
+            45
           ]
         ],
-        "seed": 0,
-        "train_seconds": 8.92
+        "seed": 4,
+        "train_seconds": 4.58
       }
     ]
   },
@@ -73,140 +209,140 @@
     },
     "paper_accuracy": 91.5,
     "n_runs": 5,
-    "acc_mean": 91.47,
+    "acc_mean": 91.43,
     "acc_sd": 0.05,
-    "acc_min": 91.42,
-    "acc_max": 91.55,
-    "train_s_mean": 2.17,
-    "macro_f1_mean": 91.46,
+    "acc_min": 91.36,
+    "acc_max": 91.47,
+    "train_s_mean": 3.19,
+    "macro_f1_mean": 91.42,
     "runs": [
       {
-        "accuracy": 91.55,
-        "macro_f1": 91.55,
+        "accuracy": 91.39,
+        "macro_f1": 91.39,
         "per_class_recall": {
-          "1": 0.9068,
-          "2": 0.9758,
-          "3": 0.8858,
-          "4": 0.8937
+          "1": 0.9042,
+          "2": 0.9763,
+          "3": 0.8826,
+          "4": 0.8926
         },
         "top_confusions": [
           [
             "3->4",
-            143
+            144
           ],
           [
             "4->3",
-            136
+            138
           ],
           [
             "1->3",
-            79
+            80
           ],
           [
             "3->1",
-            60
+            62
           ],
           [
             "1->4",
-            56
+            58
           ]
         ],
         "seed": 0,
-        "train_seconds": 2.12
+        "train_seconds": 3.45
       },
       {
-        "accuracy": 91.42,
-        "macro_f1": 91.4,
+        "accuracy": 91.36,
+        "macro_f1": 91.34,
         "per_class_recall": {
-          "1": 0.9095,
-          "2": 0.9779,
-          "3": 0.8726,
-          "4": 0.8968
+          "1": 0.9074,
+          "2": 0.9795,
+          "3": 0.8805,
+          "4": 0.8868
         },
         "top_confusions": [
           [
             "3->4",
-            157
+            148
           ],
           [
             "4->3",
-            123
+            138
           ],
           [
             "1->3",
-            71
+            75
           ],
           [
             "3->1",
-            69
+            63
           ],
           [
             "4->1",
-            55
+            58
           ]
         ],
         "seed": 1,
-        "train_seconds": 2.26
+        "train_seconds": 3.03
       },
       {
-        "accuracy": 91.46,
-        "macro_f1": 91.45,
+        "accuracy": 91.47,
+        "macro_f1": 91.47,
         "per_class_recall": {
-          "1": 0.9063,
-          "2": 0.9763,
+          "1": 0.9074,
+          "2": 0.9758,
           "3": 0.8863,
           "4": 0.8895
         },
         "top_confusions": [
           [
             "4->3",
-            142
+            145
           ],
           [
             "3->4",
-            139
+            141
           ],
           [
             "1->3",
-            77
+            78
           ],
           [
             "3->1",
-            61
+            59
           ],
           [
             "1->4",
-            55
+            56
           ]
         ],
         "seed": 2,
-        "train_seconds": 2.12
+        "train_seconds": 3.14
       },
       {
-        "accuracy": 91.45,
-        "macro_f1": 91.43,
+        "accuracy": 91.46,
+        "macro_f1": 91.44,
         "per_class_recall": {
-          "1": 0.9084,
-          "2": 0.9789,
-          "3": 0.8747,
-          "4": 0.8958
+          "1": 0.91,
+          "2": 0.9784,
+          "3": 0.8763,
+          "4": 0.8937
         },
         "top_confusions": [
           [
             "3->4",
-            155
+            151
           ],
           [
             "4->3",
-            120
+            127
           ],
           [
             "1->3",
-            72
+            69
           ],
           [
             "3->1",
-            66
+            67
           ],
           [
             "4->1",
@@ -214,16 +350,16 @@
           ]
         ],
         "seed": 3,
-        "train_seconds": 2.22
+        "train_seconds": 3.06
       },
       {
-        "accuracy": 91.49,
-        "macro_f1": 91.48,
+        "accuracy": 91.46,
+        "macro_f1": 91.45,
         "per_class_recall": {
-          "1": 0.9063,
-          "2": 0.9737,
-          "3": 0.8837,
-          "4": 0.8958
+          "1": 0.9089,
+          "2": 0.9758,
+          "3": 0.8821,
+          "4": 0.8916
         },
         "top_confusions": [
           [
@@ -232,15 +368,15 @@
           ],
           [
             "4->3",
-            133
+            136
           ],
           [
             "1->3",
-            77
+            75
           ],
           [
             "3->1",
-            66
+            67
           ],
           [
             "1->4",
@@ -248,7 +384,7 @@
           ]
         ],
         "seed": 4,
-        "train_seconds": 2.12
+        "train_seconds": 3.25
       }
     ]
   },
@@ -264,32 +400,132 @@
       "epoch": 5
     },
     "paper_accuracy": null,
-    "n_runs": 3,
-    "acc_mean": 16.56,
-    "acc_sd": 0.29,
-    "acc_min": 16.35,
-    "acc_max": 16.89,
-    "train_s_mean": 3.19,
-    "macro_f1_mean": 9.97,
+    "n_runs": 5,
+    "acc_mean": 16.41,
+    "acc_sd": 0.17,
+    "acc_min": 16.21,
+    "acc_max": 16.67,
+    "train_s_mean": 2.29,
+    "macro_f1_mean": 9.6,
     "runs": [
       {
-        "accuracy": 16.89,
-        "macro_f1": 10.39,
+        "accuracy": 16.44,
+        "macro_f1": 9.99,
+        "per_class_recall": {
+          "alt_atheism": 0.0,
+          "comp_graphics": 0.0088,
+          "comp_os_ms-windows_misc": 0.3628,
+          "comp_sys_ibm_pc_hardware": 0.3534,
+          "comp_sys_mac_hardware": 0.0721,
+          "comp_windows_x": 0.0,
+          "misc_forsale": 0.713,
+          "rec_autos": 0.009,
+          "rec_motorcycles": 0.0948,
+          "rec_sport_baseball": 0.0265,
+          "rec_sport_hockey": 0.4828,
+          "sci_crypt": 0.0603,
+          "sci_electronics": 0.0,
+          "sci_med": 0.0609,
+          "sci_space": 0.0,
+          "soc_religion_christian": 0.6441,
+          "talk_politics_guns": 0.0,
+          "talk_politics_mideast": 0.2385,
+          "talk_politics_misc": 0.0,
+          "talk_religion_misc": 0.0
+        },
+        "top_confusions": [
+          [
+            "sci_med->soc_religion_christian",
+            59
+          ],
+          [
+            "alt_atheism->soc_religion_christian",
+            58
+          ],
+          [
+            "talk_politics_mideast->soc_religion_christian",
+            56
+          ],
+          [
+            "sci_crypt->soc_religion_christian",
+            54
+          ],
+          [
+            "talk_politics_misc->soc_religion_christian",
+            52
+          ]
+        ],
+        "seed": 0,
+        "train_seconds": 2.15
+      },
+      {
+        "accuracy": 16.67,
+        "macro_f1": 9.62,
+        "per_class_recall": {
+          "alt_atheism": 0.0,
+          "comp_graphics": 0.0177,
+          "comp_os_ms-windows_misc": 0.354,
+          "comp_sys_ibm_pc_hardware": 0.3621,
+          "comp_sys_mac_hardware": 0.0721,
+          "comp_windows_x": 0.0,
+          "misc_forsale": 0.7826,
+          "rec_autos": 0.009,
+          "rec_motorcycles": 0.0603,
+          "rec_sport_baseball": 0.0,
+          "rec_sport_hockey": 0.4828,
+          "sci_crypt": 0.0431,
+          "sci_electronics": 0.0,
+          "sci_med": 0.0522,
+          "sci_space": 0.0,
+          "soc_religion_christian": 0.6271,
+          "talk_politics_guns": 0.0,
+          "talk_politics_mideast": 0.3119,
+          "talk_politics_misc": 0.0,
+          "talk_religion_misc": 0.0
+        },
+        "top_confusions": [
+          [
+            "alt_atheism->soc_religion_christian",
+            59
+          ],
+          [
+            "sci_med->soc_religion_christian",
+            57
+          ],
+          [
+            "sci_crypt->soc_religion_christian",
+            54
+          ],
+          [
+            "rec_sport_baseball->rec_sport_hockey",
+            50
+          ],
+          [
+            "talk_politics_mideast->soc_religion_christian",
+            49
+          ]
+        ],
+        "seed": 1,
+        "train_seconds": 2.31
+      },
+      {
+        "accuracy": 16.39,
+        "macro_f1": 9.75,
         "per_class_recall": {
           "alt_atheism": 0.0,
           "comp_graphics": 0.0088,
           "comp_os_ms-windows_misc": 0.3097,
-          "comp_sys_ibm_pc_hardware": 0.3879,
-          "comp_sys_mac_hardware": 0.0991,
+          "comp_sys_ibm_pc_hardware": 0.3793,
+          "comp_sys_mac_hardware": 0.0541,
           "comp_windows_x": 0.0,
-          "misc_forsale": 0.7478,
+          "misc_forsale": 0.7565,
           "rec_autos": 0.0,
-          "rec_motorcycles": 0.0948,
-          "rec_sport_baseball": 0.0354,
-          "rec_sport_hockey": 0.4828,
+          "rec_motorcycles": 0.1552,
+          "rec_sport_baseball": 0.0265,
+          "rec_sport_hockey": 0.4138,
           "sci_crypt": 0.069,
-          "sci_electronics": 0.0087,
-          "sci_med": 0.0609,
+          "sci_electronics": 0.0,
+          "sci_med": 0.0348,
           "sci_space": 0.0,
           "soc_religion_christian": 0.6271,
           "talk_politics_guns": 0.0,
@@ -299,128 +535,128 @@
         },
         "top_confusions": [
           [
-            "sci_med->soc_religion_christian",
-            57
-          ],
-          [
             "alt_atheism->soc_religion_christian",
-            54
+            59
           ],
           [
-            "sci_crypt->soc_religion_christian",
-            53
+            "sci_med->soc_religion_christian",
+            55
+          ],
+          [
+            "talk_politics_misc->soc_religion_christian",
+            50
           ],
           [
             "talk_politics_mideast->soc_religion_christian",
-            50
-          ],
-          [
-            "talk_politics_misc->soc_religion_christian",
-            50
-          ]
-        ],
-        "seed": 0,
-        "train_seconds": 3.57
-      },
-      {
-        "accuracy": 16.44,
-        "macro_f1": 9.69,
-        "per_class_recall": {
-          "alt_atheism": 0.0,
-          "comp_graphics": 0.0,
-          "comp_os_ms-windows_misc": 0.3186,
-          "comp_sys_ibm_pc_hardware": 0.3707,
-          "comp_sys_mac_hardware": 0.1171,
-          "comp_windows_x": 0.0,
-          "misc_forsale": 0.7652,
-          "rec_autos": 0.0,
-          "rec_motorcycles": 0.069,
-          "rec_sport_baseball": 0.0088,
-          "rec_sport_hockey": 0.431,
-          "sci_crypt": 0.069,
-          "sci_electronics": 0.0,
-          "sci_med": 0.0522,
-          "sci_space": 0.0,
-          "soc_religion_christian": 0.6017,
-          "talk_politics_guns": 0.0,
-          "talk_politics_mideast": 0.3303,
-          "talk_politics_misc": 0.0,
-          "talk_religion_misc": 0.0
-        },
-        "top_confusions": [
-          [
-            "alt_atheism->soc_religion_christian",
-            56
-          ],
-          [
-            "sci_med->soc_religion_christian",
-            55
-          ],
-          [
-            "sci_crypt->soc_religion_christian",
-            52
-          ],
-          [
-            "rec_sport_baseball->rec_sport_hockey",
-            46
-          ],
-          [
-            "talk_politics_misc->soc_religion_christian",
-            46
-          ]
-        ],
-        "seed": 1,
-        "train_seconds": 3.31
-      },
-      {
-        "accuracy": 16.35,
-        "macro_f1": 9.83,
-        "per_class_recall": {
-          "alt_atheism": 0.0,
-          "comp_graphics": 0.0,
-          "comp_os_ms-windows_misc": 0.2478,
-          "comp_sys_ibm_pc_hardware": 0.4138,
-          "comp_sys_mac_hardware": 0.0811,
-          "comp_windows_x": 0.0,
-          "misc_forsale": 0.7565,
-          "rec_autos": 0.0,
-          "rec_motorcycles": 0.0862,
-          "rec_sport_baseball": 0.0265,
-          "rec_sport_hockey": 0.4397,
-          "sci_crypt": 0.0862,
-          "sci_electronics": 0.0,
-          "sci_med": 0.0783,
-          "sci_space": 0.0,
-          "soc_religion_christian": 0.6017,
-          "talk_politics_guns": 0.0,
-          "talk_politics_mideast": 0.2936,
-          "talk_politics_misc": 0.0,
-          "talk_religion_misc": 0.0
-        },
-        "top_confusions": [
-          [
-            "alt_atheism->soc_religion_christian",
-            55
-          ],
-          [
-            "sci_med->soc_religion_christian",
-            55
-          ],
-          [
-            "rec_sport_baseball->rec_sport_hockey",
             49
           ],
           [
-            "sci_crypt->soc_religion_christian",
-            49
-          ],
-          [
-            "talk_politics_misc->soc_religion_christian",
+            "rec_sport_baseball->rec_sport_hockey",
             48
           ]
         ],
         "seed": 2,
-        "train_seconds": 2.7
+        "train_seconds": 2.32
+      },
+      {
+        "accuracy": 16.21,
+        "macro_f1": 9.29,
+        "per_class_recall": {
+          "alt_atheism": 0.0,
+          "comp_graphics": 0.0,
+          "comp_os_ms-windows_misc": 0.3097,
+          "comp_sys_ibm_pc_hardware": 0.3621,
+          "comp_sys_mac_hardware": 0.0631,
+          "comp_windows_x": 0.0,
+          "misc_forsale": 0.7913,
+          "rec_autos": 0.0,
+          "rec_motorcycles": 0.0776,
+          "rec_sport_baseball": 0.0088,
+          "rec_sport_hockey": 0.4052,
+          "sci_crypt": 0.1466,
+          "sci_electronics": 0.0,
+          "sci_med": 0.0087,
+          "sci_space": 0.0,
+          "soc_religion_christian": 0.5932,
+          "talk_politics_guns": 0.0,
+          "talk_politics_mideast": 0.3211,
+          "talk_politics_misc": 0.0,
+          "talk_religion_misc": 0.0
+        },
+        "top_confusions": [
+          [
+            "alt_atheism->soc_religion_christian",
+            55
+          ],
+          [
+            "sci_med->soc_religion_christian",
+            51
+          ],
+          [
+            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
+            47
+          ],
+          [
+            "talk_politics_misc->soc_religion_christian",
+            46
+          ],
+          [
+            "talk_politics_mideast->soc_religion_christian",
+            45
+          ]
+        ],
+        "seed": 3,
+        "train_seconds": 2.32
+      },
+      {
+        "accuracy": 16.35,
+        "macro_f1": 9.34,
+        "per_class_recall": {
+          "alt_atheism": 0.0,
+          "comp_graphics": 0.0,
+          "comp_os_ms-windows_misc": 0.3274,
+          "comp_sys_ibm_pc_hardware": 0.3534,
+          "comp_sys_mac_hardware": 0.0541,
+          "comp_windows_x": 0.0,
+          "misc_forsale": 0.7826,
+          "rec_autos": 0.009,
+          "rec_motorcycles": 0.069,
+          "rec_sport_baseball": 0.0,
+          "rec_sport_hockey": 0.4741,
+          "sci_crypt": 0.0776,
+          "sci_electronics": 0.0,
+          "sci_med": 0.0522,
+          "sci_space": 0.0,
+          "soc_religion_christian": 0.661,
+          "talk_politics_guns": 0.0,
+          "talk_politics_mideast": 0.2477,
+          "talk_politics_misc": 0.0,
+          "talk_religion_misc": 0.0
+        },
+        "top_confusions": [
+          [
+            "sci_med->soc_religion_christian",
+            59
+          ],
+          [
+            "alt_atheism->soc_religion_christian",
+            57
+          ],
+          [
+            "talk_politics_mideast->soc_religion_christian",
+            56
+          ],
+          [
+            "talk_politics_misc->soc_religion_christian",
+            54
+          ],
+          [
+            "sci_crypt->soc_religion_christian",
+            54
+          ]
+        ],
+        "seed": 4,
+        "train_seconds": 2.34
       }
     ]
   },
@@ -436,163 +672,263 @@
       "epoch": 25
     },
     "paper_accuracy": null,
-    "n_runs": 3,
-    "acc_mean": 62.16,
-    "acc_sd": 0.3,
-    "acc_min": 61.83,
-    "acc_max": 62.42,
-    "train_s_mean": 6.34,
-    "macro_f1_mean": 61.14,
+    "n_runs": 5,
+    "acc_mean": 62.17,
+    "acc_sd": 0.18,
+    "acc_min": 61.96,
+    "acc_max": 62.37,
+    "train_s_mean": 6.97,
+    "macro_f1_mean": 61.1,
     "runs": [
       {
-        "accuracy": 62.42,
-        "macro_f1": 61.36,
+        "accuracy": 62.37,
+        "macro_f1": 61.32,
         "per_class_recall": {
-          "alt_atheism": 0.5591,
-          "comp_graphics": 0.6637,
-          "comp_os_ms-windows_misc": 0.6018,
-          "comp_sys_ibm_pc_hardware": 0.5345,
-          "comp_sys_mac_hardware": 0.4955,
-          "comp_windows_x": 0.7436,
-          "misc_forsale": 0.7217,
-          "rec_autos": 0.5586,
-          "rec_motorcycles": 0.5948,
-          "rec_sport_baseball": 0.6283,
-          "rec_sport_hockey": 0.7328,
-          "sci_crypt": 0.75,
-          "sci_electronics": 0.5826,
-          "sci_med": 0.7304,
-          "sci_space": 0.7217,
-          "soc_religion_christian": 0.7034,
-          "talk_politics_guns": 0.6132,
-          "talk_politics_mideast": 0.633,
-          "talk_politics_misc": 0.5444,
+          "alt_atheism": 0.5699,
+          "comp_graphics": 0.6195,
+          "comp_os_ms-windows_misc": 0.6195,
+          "comp_sys_ibm_pc_hardware": 0.569,
+          "comp_sys_mac_hardware": 0.4865,
+          "comp_windows_x": 0.6838,
+          "misc_forsale": 0.713,
+          "rec_autos": 0.5946,
+          "rec_motorcycles": 0.6293,
+          "rec_sport_baseball": 0.6637,
+          "rec_sport_hockey": 0.7155,
+          "sci_crypt": 0.7328,
+          "sci_electronics": 0.5739,
+          "sci_med": 0.7565,
+          "sci_space": 0.6696,
+          "soc_religion_christian": 0.7203,
+          "talk_politics_guns": 0.6321,
+          "talk_politics_mideast": 0.6239,
+          "talk_politics_misc": 0.5333,
           "talk_religion_misc": 0.1528
         },
         "top_confusions": [
           [
-            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
+            "talk_religion_misc->soc_religion_christian",
             22
+          ],
+          [
+            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
+            20
+          ],
+          [
+            "comp_windows_x->comp_graphics",
+            18
+          ],
+          [
+            "rec_autos->rec_motorcycles",
+            18
+          ],
+          [
+            "talk_religion_misc->alt_atheism",
+            15
+          ]
+        ],
+        "seed": 0,
+        "train_seconds": 6.54
+      },
+      {
+        "accuracy": 62.33,
+        "macro_f1": 61.31,
+        "per_class_recall": {
+          "alt_atheism": 0.5914,
+          "comp_graphics": 0.646,
+          "comp_os_ms-windows_misc": 0.6106,
+          "comp_sys_ibm_pc_hardware": 0.5517,
+          "comp_sys_mac_hardware": 0.4775,
+          "comp_windows_x": 0.7009,
+          "misc_forsale": 0.713,
+          "rec_autos": 0.5766,
+          "rec_motorcycles": 0.6034,
+          "rec_sport_baseball": 0.6903,
+          "rec_sport_hockey": 0.6983,
+          "sci_crypt": 0.7241,
+          "sci_electronics": 0.5739,
+          "sci_med": 0.7565,
+          "sci_space": 0.7043,
+          "soc_religion_christian": 0.7203,
+          "talk_politics_guns": 0.6038,
+          "talk_politics_mideast": 0.633,
+          "talk_politics_misc": 0.5111,
+          "talk_religion_misc": 0.1667
+        },
+        "top_confusions": [
+          [
+            "talk_religion_misc->soc_religion_christian",
+            22
+          ],
+          [
+            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
+            21
+          ],
+          [
+            "rec_autos->rec_motorcycles",
+            19
+          ],
+          [
+            "talk_politics_misc->talk_politics_guns",
+            16
+          ],
+          [
+            "rec_sport_hockey->rec_sport_baseball",
+            15
+          ]
+        ],
+        "seed": 1,
+        "train_seconds": 6.87
+      },
+      {
+        "accuracy": 61.96,
+        "macro_f1": 61.02,
+        "per_class_recall": {
+          "alt_atheism": 0.5806,
+          "comp_graphics": 0.6195,
+          "comp_os_ms-windows_misc": 0.6372,
+          "comp_sys_ibm_pc_hardware": 0.5431,
+          "comp_sys_mac_hardware": 0.4414,
+          "comp_windows_x": 0.6667,
+          "misc_forsale": 0.7043,
+          "rec_autos": 0.6036,
+          "rec_motorcycles": 0.5948,
+          "rec_sport_baseball": 0.6903,
+          "rec_sport_hockey": 0.7328,
+          "sci_crypt": 0.7155,
+          "sci_electronics": 0.5826,
+          "sci_med": 0.6957,
+          "sci_space": 0.713,
+          "soc_religion_christian": 0.7458,
+          "talk_politics_guns": 0.6132,
+          "talk_politics_mideast": 0.6147,
+          "talk_politics_misc": 0.5,
+          "talk_religion_misc": 0.1944
+        },
+        "top_confusions": [
+          [
+            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
+            25
           ],
           [
             "talk_religion_misc->soc_religion_christian",
             20
           ],
           [
-            "rec_sport_baseball->rec_motorcycles",
-            18
+            "rec_autos->rec_motorcycles",
+            19
           ],
           [
-            "rec_autos->rec_motorcycles",
-            18
+            "comp_windows_x->comp_graphics",
+            17
           ],
           [
             "talk_politics_misc->talk_politics_guns",
-            17
+            16
           ]
         ],
-        "seed": 0,
-        "train_seconds": 6.9
+        "seed": 2,
+        "train_seconds": 7.71
       },
       {
-        "accuracy": 62.24,
-        "macro_f1": 61.25,
+        "accuracy": 62.01,
+        "macro_f1": 60.75,
         "per_class_recall": {
-          "alt_atheism": 0.6237,
-          "comp_graphics": 0.6549,
+          "alt_atheism": 0.5914,
+          "comp_graphics": 0.646,
           "comp_os_ms-windows_misc": 0.6106,
-          "comp_sys_ibm_pc_hardware": 0.5086,
-          "comp_sys_mac_hardware": 0.4955,
-          "comp_windows_x": 0.735,
-          "misc_forsale": 0.7391,
-          "rec_autos": 0.4775,
-          "rec_motorcycles": 0.6552,
-          "rec_sport_baseball": 0.6549,
-          "rec_sport_hockey": 0.6724,
-          "sci_crypt": 0.7414,
-          "sci_electronics": 0.5739,
-          "sci_med": 0.7217,
-          "sci_space": 0.7478,
-          "soc_religion_christian": 0.7373,
-          "talk_politics_guns": 0.5377,
-          "talk_politics_mideast": 0.6422,
-          "talk_politics_misc": 0.5333,
-          "talk_religion_misc": 0.1806
+          "comp_sys_ibm_pc_hardware": 0.5172,
+          "comp_sys_mac_hardware": 0.5135,
+          "comp_windows_x": 0.7179,
+          "misc_forsale": 0.713,
+          "rec_autos": 0.5495,
+          "rec_motorcycles": 0.5776,
+          "rec_sport_baseball": 0.6903,
+          "rec_sport_hockey": 0.7241,
+          "sci_crypt": 0.7069,
+          "sci_electronics": 0.6,
+          "sci_med": 0.7304,
+          "sci_space": 0.7043,
+          "soc_religion_christian": 0.6949,
+          "talk_politics_guns": 0.6226,
+          "talk_politics_mideast": 0.6697,
+          "talk_politics_misc": 0.4556,
+          "talk_religion_misc": 0.1389
         },
         "top_confusions": [
+          [
+            "talk_religion_misc->soc_religion_christian",
+            22
+          ],
           [
             "rec_autos->rec_motorcycles",
             22
           ],
           [
-            "talk_religion_misc->soc_religion_christian",
-            21
-          ],
-          [
             "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
-            21
-          ],
-          [
-            "comp_sys_ibm_pc_hardware->comp_sys_mac_hardware",
-            16
+            19
           ],
           [
             "talk_politics_misc->talk_politics_guns",
             15
-          ]
-        ],
-        "seed": 1,
-        "train_seconds": 5.65
-      },
-      {
-        "accuracy": 61.83,
-        "macro_f1": 60.82,
-        "per_class_recall": {
-          "alt_atheism": 0.5484,
-          "comp_graphics": 0.6106,
-          "comp_os_ms-windows_misc": 0.5929,
-          "comp_sys_ibm_pc_hardware": 0.5517,
-          "comp_sys_mac_hardware": 0.4775,
-          "comp_windows_x": 0.7009,
-          "misc_forsale": 0.7304,
-          "rec_autos": 0.5856,
-          "rec_motorcycles": 0.5948,
-          "rec_sport_baseball": 0.6637,
-          "rec_sport_hockey": 0.7241,
-          "sci_crypt": 0.75,
-          "sci_electronics": 0.5565,
-          "sci_med": 0.713,
-          "sci_space": 0.7304,
-          "soc_religion_christian": 0.7203,
-          "talk_politics_guns": 0.5849,
-          "talk_politics_mideast": 0.6055,
-          "talk_politics_misc": 0.5333,
-          "talk_religion_misc": 0.1806
-        },
-        "top_confusions": [
-          [
-            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
-            24
-          ],
-          [
-            "talk_religion_misc->soc_religion_christian",
-            21
-          ],
-          [
-            "talk_politics_misc->talk_politics_guns",
-            16
           ],
           [
             "comp_windows_x->comp_graphics",
             15
+          ]
+        ],
+        "seed": 3,
+        "train_seconds": 6.93
+      },
+      {
+        "accuracy": 62.19,
+        "macro_f1": 61.12,
+        "per_class_recall": {
+          "alt_atheism": 0.5376,
+          "comp_graphics": 0.6372,
+          "comp_os_ms-windows_misc": 0.6283,
+          "comp_sys_ibm_pc_hardware": 0.5517,
+          "comp_sys_mac_hardware": 0.4595,
+          "comp_windows_x": 0.7009,
+          "misc_forsale": 0.713,
+          "rec_autos": 0.6036,
+          "rec_motorcycles": 0.5862,
+          "rec_sport_baseball": 0.6726,
+          "rec_sport_hockey": 0.7241,
+          "sci_crypt": 0.7414,
+          "sci_electronics": 0.5652,
+          "sci_med": 0.7043,
+          "sci_space": 0.7217,
+          "soc_religion_christian": 0.6949,
+          "talk_politics_guns": 0.5943,
+          "talk_politics_mideast": 0.6697,
+          "talk_politics_misc": 0.5444,
+          "talk_religion_misc": 0.1806
+        },
+        "top_confusions": [
+          [
+            "talk_religion_misc->soc_religion_christian",
+            19
           ],
           [
-            "comp_os_ms-windows_misc->comp_graphics",
+            "rec_autos->rec_motorcycles",
+            17
+          ],
+          [
+            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
+            16
+          ],
+          [
+            "talk_politics_misc->talk_politics_guns",
+            15
+          ],
+          [
+            "comp_windows_x->comp_graphics",
             15
           ]
         ],
-        "seed": 2,
-        "train_seconds": 6.48
+        "seed": 4,
+        "train_seconds": 6.79
       }
     ]
   },
@@ -610,37 +946,37 @@
     },
     "paper_accuracy": null,
     "n_runs": 5,
-    "acc_mean": 56.79,
-    "acc_sd": 0.5,
-    "acc_min": 56.03,
-    "acc_max": 57.4,
-    "train_s_mean": 5.41,
-    "macro_f1_mean": 56.06,
+    "acc_mean": 56.97,
+    "acc_sd": 0.42,
+    "acc_min": 56.53,
+    "acc_max": 57.67,
+    "train_s_mean": 6.69,
+    "macro_f1_mean": 56.26,
     "runs": [
       {
-        "accuracy": 56.71,
-        "macro_f1": 55.92,
+        "accuracy": 56.89,
+        "macro_f1": 56.11,
         "per_class_recall": {
           "alt_atheism": 0.4301,
-          "comp_graphics": 0.5398,
-          "comp_os_ms-windows_misc": 0.6018,
+          "comp_graphics": 0.5487,
+          "comp_os_ms-windows_misc": 0.6195,
           "comp_sys_ibm_pc_hardware": 0.5345,
-          "comp_sys_mac_hardware": 0.4685,
-          "comp_windows_x": 0.7094,
+          "comp_sys_mac_hardware": 0.4595,
+          "comp_windows_x": 0.7009,
           "misc_forsale": 0.5913,
-          "rec_autos": 0.5135,
-          "rec_motorcycles": 0.569,
-          "rec_sport_baseball": 0.6372,
-          "rec_sport_hockey": 0.6897,
+          "rec_autos": 0.5405,
+          "rec_motorcycles": 0.5517,
+          "rec_sport_baseball": 0.6195,
+          "rec_sport_hockey": 0.6983,
           "sci_crypt": 0.6552,
-          "sci_electronics": 0.4348,
+          "sci_electronics": 0.4435,
           "sci_med": 0.687,
-          "sci_space": 0.6348,
+          "sci_space": 0.6174,
           "soc_religion_christian": 0.6525,
           "talk_politics_guns": 0.5283,
-          "talk_politics_mideast": 0.6422,
-          "talk_politics_misc": 0.4111,
-          "talk_religion_misc": 0.2083
+          "talk_politics_mideast": 0.6514,
+          "talk_politics_misc": 0.4222,
+          "talk_religion_misc": 0.2361
         },
         "top_confusions": [
           [
@@ -648,58 +984,58 @@
             21
           ],
           [
+            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
+            21
+          ],
+          [
             "talk_religion_misc->soc_religion_christian",
-            20
+            19
           ],
           [
             "rec_autos->rec_motorcycles",
-            20
+            17
           ],
           [
-            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
-            20
-          ],
-          [
-            "rec_sport_hockey->rec_sport_baseball",
-            18
+            "talk_politics_guns->talk_politics_misc",
+            17
           ]
         ],
         "seed": 0,
-        "train_seconds": 5.19
+        "train_seconds": 6.45
       },
       {
-        "accuracy": 56.8,
-        "macro_f1": 56.08,
+        "accuracy": 56.89,
+        "macro_f1": 56.27,
         "per_class_recall": {
           "alt_atheism": 0.4624,
-          "comp_graphics": 0.5398,
-          "comp_os_ms-windows_misc": 0.6106,
+          "comp_graphics": 0.5221,
+          "comp_os_ms-windows_misc": 0.6018,
           "comp_sys_ibm_pc_hardware": 0.5431,
-          "comp_sys_mac_hardware": 0.4685,
-          "comp_windows_x": 0.7009,
+          "comp_sys_mac_hardware": 0.4775,
+          "comp_windows_x": 0.7094,
           "misc_forsale": 0.5913,
-          "rec_autos": 0.5225,
-          "rec_motorcycles": 0.5862,
-          "rec_sport_baseball": 0.5929,
-          "rec_sport_hockey": 0.681,
-          "sci_crypt": 0.6552,
+          "rec_autos": 0.5135,
+          "rec_motorcycles": 0.5776,
+          "rec_sport_baseball": 0.6018,
+          "rec_sport_hockey": 0.6897,
+          "sci_crypt": 0.6724,
           "sci_electronics": 0.4174,
-          "sci_med": 0.687,
-          "sci_space": 0.6174,
-          "soc_religion_christian": 0.6525,
-          "talk_politics_guns": 0.5472,
+          "sci_med": 0.6957,
+          "sci_space": 0.6,
+          "soc_religion_christian": 0.6441,
+          "talk_politics_guns": 0.5377,
           "talk_politics_mideast": 0.6422,
-          "talk_politics_misc": 0.4333,
-          "talk_religion_misc": 0.2222
+          "talk_politics_misc": 0.4556,
+          "talk_religion_misc": 0.25
         },
         "top_confusions": [
           [
-            "talk_politics_misc->talk_politics_guns",
+            "rec_autos->rec_motorcycles",
             20
           ],
           [
-            "rec_autos->rec_motorcycles",
-            20
+            "talk_politics_misc->talk_politics_guns",
+            19
           ],
           [
             "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
@@ -715,40 +1051,90 @@
           ]
         ],
         "seed": 1,
-        "train_seconds": 5.79
+        "train_seconds": 6.83
       },
       {
-        "accuracy": 56.03,
-        "macro_f1": 55.47,
+        "accuracy": 56.53,
+        "macro_f1": 55.87,
         "per_class_recall": {
-          "alt_atheism": 0.4624,
-          "comp_graphics": 0.5133,
+          "alt_atheism": 0.4516,
+          "comp_graphics": 0.5221,
           "comp_os_ms-windows_misc": 0.6195,
-          "comp_sys_ibm_pc_hardware": 0.5259,
-          "comp_sys_mac_hardware": 0.4865,
-          "comp_windows_x": 0.7265,
+          "comp_sys_ibm_pc_hardware": 0.5431,
+          "comp_sys_mac_hardware": 0.4775,
+          "comp_windows_x": 0.7094,
           "misc_forsale": 0.5913,
-          "rec_autos": 0.5045,
-          "rec_motorcycles": 0.5345,
-          "rec_sport_baseball": 0.6106,
-          "rec_sport_hockey": 0.6897,
+          "rec_autos": 0.4955,
+          "rec_motorcycles": 0.5431,
+          "rec_sport_baseball": 0.6195,
+          "rec_sport_hockey": 0.7069,
           "sci_crypt": 0.6293,
-          "sci_electronics": 0.4,
+          "sci_electronics": 0.4522,
           "sci_med": 0.6522,
-          "sci_space": 0.6261,
-          "soc_religion_christian": 0.6356,
+          "sci_space": 0.6522,
+          "soc_religion_christian": 0.6525,
           "talk_politics_guns": 0.5377,
-          "talk_politics_mideast": 0.6422,
+          "talk_politics_mideast": 0.633,
           "talk_politics_misc": 0.4111,
-          "talk_religion_misc": 0.2222
+          "talk_religion_misc": 0.2083
         },
         "top_confusions": [
+          [
+            "rec_autos->rec_motorcycles",
+            21
+          ],
           [
             "talk_politics_guns->talk_politics_misc",
             21
           ],
           [
+            "talk_politics_misc->talk_politics_guns",
+            19
+          ],
+          [
+            "talk_religion_misc->soc_religion_christian",
+            19
+          ],
+          [
+            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
+            19
+          ]
+        ],
+        "seed": 2,
+        "train_seconds": 6.55
+      },
+      {
+        "accuracy": 56.89,
+        "macro_f1": 56.11,
+        "per_class_recall": {
+          "alt_atheism": 0.4409,
+          "comp_graphics": 0.5398,
+          "comp_os_ms-windows_misc": 0.6195,
+          "comp_sys_ibm_pc_hardware": 0.5517,
+          "comp_sys_mac_hardware": 0.4595,
+          "comp_windows_x": 0.7009,
+          "misc_forsale": 0.5826,
+          "rec_autos": 0.5135,
+          "rec_motorcycles": 0.5862,
+          "rec_sport_baseball": 0.6018,
+          "rec_sport_hockey": 0.7069,
+          "sci_crypt": 0.6552,
+          "sci_electronics": 0.4348,
+          "sci_med": 0.6783,
+          "sci_space": 0.6087,
+          "soc_religion_christian": 0.6441,
+          "talk_politics_guns": 0.5377,
+          "talk_politics_mideast": 0.6514,
+          "talk_politics_misc": 0.4667,
+          "talk_religion_misc": 0.2083
+        },
+        "top_confusions": [
+          [
             "rec_autos->rec_motorcycles",
+            21
+          ],
+          [
+            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
             20
           ],
           [
@@ -756,90 +1142,40 @@
             19
           ],
           [
-            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
-            18
-          ],
-          [
-            "rec_sport_baseball->sci_space",
-            17
-          ]
-        ],
-        "seed": 2,
-        "train_seconds": 5.36
-      },
-      {
-        "accuracy": 56.99,
-        "macro_f1": 56.08,
-        "per_class_recall": {
-          "alt_atheism": 0.4194,
-          "comp_graphics": 0.5398,
-          "comp_os_ms-windows_misc": 0.6195,
-          "comp_sys_ibm_pc_hardware": 0.5431,
-          "comp_sys_mac_hardware": 0.4505,
-          "comp_windows_x": 0.7179,
-          "misc_forsale": 0.5913,
-          "rec_autos": 0.5315,
-          "rec_motorcycles": 0.569,
-          "rec_sport_baseball": 0.6372,
-          "rec_sport_hockey": 0.7155,
-          "sci_crypt": 0.6552,
-          "sci_electronics": 0.4348,
-          "sci_med": 0.687,
-          "sci_space": 0.6087,
-          "soc_religion_christian": 0.661,
-          "talk_politics_guns": 0.5189,
-          "talk_politics_mideast": 0.6514,
-          "talk_politics_misc": 0.4333,
-          "talk_religion_misc": 0.2083
-        },
-        "top_confusions": [
-          [
-            "talk_politics_misc->talk_politics_guns",
-            20
-          ],
-          [
-            "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
-            20
-          ],
-          [
             "comp_graphics->comp_windows_x",
-            18
-          ],
-          [
-            "sci_electronics->comp_sys_ibm_pc_hardware",
-            18
+            17
           ],
           [
             "talk_religion_misc->soc_religion_christian",
-            18
+            17
           ]
         ],
         "seed": 3,
-        "train_seconds": 5.44
+        "train_seconds": 7.03
       },
       {
-        "accuracy": 57.4,
-        "macro_f1": 56.73,
+        "accuracy": 57.67,
+        "macro_f1": 56.93,
         "per_class_recall": {
           "alt_atheism": 0.4301,
-          "comp_graphics": 0.5398,
-          "comp_os_ms-windows_misc": 0.646,
-          "comp_sys_ibm_pc_hardware": 0.5259,
+          "comp_graphics": 0.5487,
+          "comp_os_ms-windows_misc": 0.6549,
+          "comp_sys_ibm_pc_hardware": 0.5345,
           "comp_sys_mac_hardware": 0.4775,
           "comp_windows_x": 0.7094,
-          "misc_forsale": 0.5913,
-          "rec_autos": 0.5225,
+          "misc_forsale": 0.5826,
+          "rec_autos": 0.5315,
           "rec_motorcycles": 0.5776,
           "rec_sport_baseball": 0.6106,
-          "rec_sport_hockey": 0.7414,
-          "sci_crypt": 0.6466,
-          "sci_electronics": 0.4522,
+          "rec_sport_hockey": 0.7328,
+          "sci_crypt": 0.6552,
+          "sci_electronics": 0.4435,
           "sci_med": 0.687,
-          "sci_space": 0.6261,
-          "soc_religion_christian": 0.6441,
-          "talk_politics_guns": 0.5566,
+          "sci_space": 0.6435,
+          "soc_religion_christian": 0.6356,
+          "talk_politics_guns": 0.5755,
           "talk_politics_mideast": 0.633,
-          "talk_politics_misc": 0.4444,
+          "talk_politics_misc": 0.4556,
           "talk_religion_misc": 0.2222
         },
         "top_confusions": [
@@ -848,49 +1184,241 @@
             21
           ],
           [
-            "talk_religion_misc->soc_religion_christian",
-            20
-          ],
-          [
             "rec_autos->rec_motorcycles",
             20
           ],
           [
             "comp_sys_mac_hardware->comp_sys_ibm_pc_hardware",
-            20
+            19
           ],
           [
-            "talk_politics_guns->talk_politics_misc",
+            "talk_religion_misc->soc_religion_christian",
+            17
+          ],
+          [
+            "comp_windows_x->comp_graphics",
             15
           ]
         ],
         "seed": 4,
-        "train_seconds": 5.26
+        "train_seconds": 6.61
+      }
+    ]
+  },
+  "rss2026_paper_cfg": {
+    "model": "fastText",
+    "dataset": "rss2026",
+    "params": {
+      "dim": 10,
+      "lr": 0.25,
+      "wordNgrams": 2,
+      "minCount": 1,
+      "bucket": 10000000,
+      "epoch": 5
+    },
+    "paper_accuracy": null,
+    "n_runs": 5,
+    "acc_mean": 37.22,
+    "acc_sd": 7.72,
+    "acc_min": 28.71,
+    "acc_max": 44.55,
+    "train_s_mean": 0.49,
+    "macro_f1_mean": 28.13,
+    "runs": [
+      {
+        "accuracy": 29.7,
+        "macro_f1": 20.94,
+        "per_class_recall": {
+          "1": 0.28,
+          "2": 0.0741,
+          "3": 0.0,
+          "4": 0.75
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            19
+          ],
+          [
+            "1->4",
+            16
+          ],
+          [
+            "2->4",
+            14
+          ],
+          [
+            "2->1",
+            9
+          ],
+          [
+            "4->1",
+            7
+          ]
+        ],
+        "seed": 0,
+        "train_seconds": 0.48
+      },
+      {
+        "accuracy": 28.71,
+        "macro_f1": 17.34,
+        "per_class_recall": {
+          "1": 0.04,
+          "2": 0.1111,
+          "3": 0.0,
+          "4": 0.8929
+        },
+        "top_confusions": [
+          [
+            "1->4",
+            23
+          ],
+          [
+            "3->4",
+            19
+          ],
+          [
+            "2->4",
+            15
+          ],
+          [
+            "2->1",
+            7
+          ],
+          [
+            "2->3",
+            2
+          ]
+        ],
+        "seed": 1,
+        "train_seconds": 0.49
+      },
+      {
+        "accuracy": 44.55,
+        "macro_f1": 36.28,
+        "per_class_recall": {
+          "1": 0.4,
+          "2": 0.963,
+          "3": 0.0,
+          "4": 0.3214
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            13
+          ],
+          [
+            "4->2",
+            13
+          ],
+          [
+            "1->4",
+            8
+          ],
+          [
+            "3->2",
+            7
+          ],
+          [
+            "1->2",
+            6
+          ]
+        ],
+        "seed": 2,
+        "train_seconds": 0.5
+      },
+      {
+        "accuracy": 38.61,
+        "macro_f1": 31.33,
+        "per_class_recall": {
+          "1": 0.28,
+          "2": 0.3704,
+          "3": 0.0,
+          "4": 0.7857
+        },
+        "top_confusions": [
+          [
+            "1->4",
+            16
+          ],
+          [
+            "3->4",
+            14
+          ],
+          [
+            "2->4",
+            9
+          ],
+          [
+            "2->1",
+            7
+          ],
+          [
+            "3->1",
+            4
+          ]
+        ],
+        "seed": 3,
+        "train_seconds": 0.47
+      },
+      {
+        "accuracy": 44.55,
+        "macro_f1": 34.76,
+        "per_class_recall": {
+          "1": 0.2,
+          "2": 0.7407,
+          "3": 0.0,
+          "4": 0.7143
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            13
+          ],
+          [
+            "1->4",
+            12
+          ],
+          [
+            "1->2",
+            8
+          ],
+          [
+            "3->2",
+            8
+          ],
+          [
+            "4->2",
+            7
+          ]
+        ],
+        "seed": 4,
+        "train_seconds": 0.5
       }
     ]
   },
   "ag_news_tfidf_lr": {
     "model": "TF-IDF + LogReg",
     "dataset": "ag_news",
-    "acc_mean": 92.5,
+    "acc_mean": 92.58,
     "acc_sd": 0.0,
     "n_runs": 1,
-    "train_s_mean": 81.94,
-    "macro_f1_mean": 92.49,
+    "train_s_mean": 71.94,
+    "macro_f1_mean": 92.57,
     "runs": [
       {
-        "accuracy": 92.5,
-        "macro_f1": 92.49,
+        "accuracy": 92.58,
+        "macro_f1": 92.57,
         "per_class_recall": {
-          "1": 0.9153,
+          "1": 0.9179,
           "2": 0.9811,
-          "3": 0.8932,
-          "4": 0.9105
+          "3": 0.8942,
+          "4": 0.91
         },
         "top_confusions": [
           [
             "3->4",
-            137
+            133
           ],
           [
             "4->3",
@@ -898,15 +1426,15 @@
           ],
           [
             "1->3",
-            65
+            64
           ],
           [
             "3->1",
-            53
+            55
           ],
           [
-            "1->4",
-            48
+            "1->2",
+            47
           ]
         ]
       }
@@ -918,7 +1446,7 @@
     "acc_mean": 76.53,
     "acc_sd": 0.0,
     "n_runs": 1,
-    "train_s_mean": 103.33,
+    "train_s_mean": 54.73,
     "macro_f1_mean": 75.5,
     "runs": [
       {
@@ -966,6 +1494,218 @@
           [
             "comp_os_ms-windows_misc->comp_sys_ibm_pc_hardware",
             9
+          ]
+        ]
+      }
+    ]
+  },
+  "rss2026_tfidf_lr": {
+    "model": "TF-IDF + LogReg",
+    "dataset": "rss2026",
+    "acc_mean": 72.28,
+    "acc_sd": 0.0,
+    "n_runs": 1,
+    "train_s_mean": 0.05,
+    "macro_f1_mean": 71.21,
+    "runs": [
+      {
+        "accuracy": 72.28,
+        "macro_f1": 71.21,
+        "per_class_recall": {
+          "1": 0.72,
+          "2": 0.8889,
+          "3": 0.4762,
+          "4": 0.75
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            7
+          ],
+          [
+            "1->4",
+            5
+          ],
+          [
+            "3->1",
+            4
+          ],
+          [
+            "4->2",
+            3
+          ],
+          [
+            "4->1",
+            3
+          ]
+        ]
+      }
+    ]
+  },
+  "agnews_to_rss2026": {
+    "train": "ag_news",
+    "test": "rss2026 (all usable items)",
+    "n_test": 508,
+    "acc_mean": 74.41,
+    "acc_sd": 0.5,
+    "runs": [
+      {
+        "accuracy": 75.0,
+        "macro_f1": 74.54,
+        "per_class_recall": {
+          "1": 0.8268,
+          "2": 0.8148,
+          "3": 0.6038,
+          "4": 0.7286
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            26
+          ],
+          [
+            "4->3",
+            18
+          ],
+          [
+            "4->1",
+            17
+          ],
+          [
+            "3->1",
+            14
+          ],
+          [
+            "1->4",
+            11
+          ]
+        ]
+      },
+      {
+        "accuracy": 73.82,
+        "macro_f1": 73.26,
+        "per_class_recall": {
+          "1": 0.8189,
+          "2": 0.8222,
+          "3": 0.5849,
+          "4": 0.7
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            24
+          ],
+          [
+            "4->3",
+            21
+          ],
+          [
+            "4->1",
+            18
+          ],
+          [
+            "3->1",
+            17
+          ],
+          [
+            "1->4",
+            11
+          ]
+        ]
+      },
+      {
+        "accuracy": 74.02,
+        "macro_f1": 73.51,
+        "per_class_recall": {
+          "1": 0.8031,
+          "2": 0.8296,
+          "3": 0.5943,
+          "4": 0.7071
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            24
+          ],
+          [
+            "4->3",
+            20
+          ],
+          [
+            "4->1",
+            18
+          ],
+          [
+            "3->1",
+            16
+          ],
+          [
+            "1->4",
+            12
+          ]
+        ]
+      },
+      {
+        "accuracy": 74.41,
+        "macro_f1": 73.85,
+        "per_class_recall": {
+          "1": 0.8189,
+          "2": 0.8148,
+          "3": 0.5849,
+          "4": 0.7286
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            24
+          ],
+          [
+            "4->3",
+            18
+          ],
+          [
+            "3->1",
+            17
+          ],
+          [
+            "4->1",
+            17
+          ],
+          [
+            "1->4",
+            12
+          ]
+        ]
+      },
+      {
+        "accuracy": 74.8,
+        "macro_f1": 74.23,
+        "per_class_recall": {
+          "1": 0.8189,
+          "2": 0.8222,
+          "3": 0.5849,
+          "4": 0.7357
+        },
+        "top_confusions": [
+          [
+            "3->4",
+            23
+          ],
+          [
+            "3->1",
+            18
+          ],
+          [
+            "4->3",
+            17
+          ],
+          [
+            "4->1",
+            17
+          ],
+          [
+            "1->4",
+            12
           ]
         ]
       }

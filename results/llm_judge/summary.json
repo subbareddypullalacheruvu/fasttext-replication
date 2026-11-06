@@ -1,0 +1,189 @@
+{
+  "n_errors_judged": 127,
+  "verdicts": {
+    "MODEL_ERROR": 55,
+    "AMBIGUOUS": 37,
+    "LABEL_NOISE": 35
+  },
+  "verdict_pct": {
+    "MODEL_ERROR": 43.3,
+    "AMBIGUOUS": 29.1,
+    "LABEL_NOISE": 27.6
+  },
+  "by_confusion": [
+    {
+      "gold": "Business",
+      "pred": "Sci/Tech",
+      "verdict": "MODEL_ERROR",
+      "n": 10
+    },
+    {
+      "gold": "Business",
+      "pred": "Sci/Tech",
+      "verdict": "LABEL_NOISE",
+      "n": 10
+    },
+    {
+      "gold": "Sports",
+      "pred": "World",
+      "verdict": "MODEL_ERROR",
+      "n": 9
+    },
+    {
+      "gold": "Sci/Tech",
+      "pred": "World",
+      "verdict": "AMBIGUOUS",
+      "n": 8
+    },
+    {
+      "gold": "Sci/Tech",
+      "pred": "Business",
+      "verdict": "LABEL_NOISE",
+      "n": 8
+    },
+    {
+      "gold": "Sports",
+      "pred": "Sci/Tech",
+      "verdict": "MODEL_ERROR",
+      "n": 7
+    },
+    {
+      "gold": "World",
+      "pred": "Business",
+      "verdict": "MODEL_ERROR",
+      "n": 6
+    },
+    {
+      "gold": "Business",
+      "pred": "Sci/Tech",
+      "verdict": "AMBIGUOUS",
+      "n": 6
+    },
+    {
+      "gold": "Business",
+      "pred": "World",
+      "verdict": "AMBIGUOUS",
+      "n": 6
+    },
+    {
+      "gold": "Sci/Tech",
+      "pred": "Business",
+      "verdict": "AMBIGUOUS",
+      "n": 6
+    },
+    {
+      "gold": "World",
+      "pred": "Sci/Tech",
+      "verdict": "MODEL_ERROR",
+      "n": 5
+    },
+    {
+      "gold": "Business",
+      "pred": "World",
+      "verdict": "LABEL_NOISE",
+      "n": 5
+    },
+    {
+      "gold": "Sci/Tech",
+      "pred": "World",
+      "verdict": "LABEL_NOISE",
+      "n": 5
+    },
+    {
+      "gold": "World",
+      "pred": "Business",
+      "verdict": "AMBIGUOUS",
+      "n": 4
+    },
+    {
+      "gold": "World",
+      "pred": "Sci/Tech",
+      "verdict": "AMBIGUOUS",
+      "n": 4
+    },
+    {
+      "gold": "Sci/Tech",
+      "pred": "Business",
+      "verdict": "MODEL_ERROR",
+      "n": 4
+    },
+    {
+      "gold": "Sci/Tech",
+      "pred": "World",
+      "verdict": "MODEL_ERROR",
+      "n": 4
+    },
+    {
+      "gold": "Sports",
+      "pred": "Business",
+      "verdict": "MODEL_ERROR",
+      "n": 3
+    },
+    {
+      "gold": "Business",
+      "pred": "World",
+      "verdict": "MODEL_ERROR",
+      "n": 3
+    },
+    {
+      "gold": "Sci/Tech",
+      "pred": "Sports",
+      "verdict": "MODEL_ERROR",
+      "n": 3
+    },
+    {
+      "gold": "World",
+      "pred": "Sci/Tech",
+      "verdict": "LABEL_NOISE",
+      "n": 2
+    },
+    {
+      "gold": "Sports",
+      "pred": "World",
+      "verdict": "AMBIGUOUS",
+      "n": 2
+    },
+    {
+      "gold": "Sports",
+      "pred": "Business",
+      "verdict": "LABEL_NOISE",
+      "n": 2
+    },
+    {
+      "gold": "World",
+      "pred": "Sports",
+      "verdict": "LABEL_NOISE",
+      "n": 1
+    },
+    {
+      "gold": "Sports",
+      "pred": "Sci/Tech",
+      "verdict": "AMBIGUOUS",
+      "n": 1
+    },
+    {
+      "gold": "Sports",
+      "pred": "Sci/Tech",
+      "verdict": "LABEL_NOISE",
+      "n": 1
+    },
+    {
+      "gold": "Business",
+      "pred": "Sports",
+      "verdict": "MODEL_ERROR",
+      "n": 1
+    },
+    {
+      "gold": "Business",
+      "pred": "Sports",
+      "verdict": "LABEL_NOISE",
+      "n": 1
+    }
+  ],
+  "human_check": {
+    "n": 30,
+    "raw_agreement_pct": 46.7,
+    "cohen_kappa": 0.203,
+    "binary_agreement_pct": 63.3
+  }
+}
