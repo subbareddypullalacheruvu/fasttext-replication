@@ -37,7 +37,7 @@ new dataset of 548 news headlines I collected from RSS feeds in October 2026, a 
 on 2004-era AG News falls from \AGbi\% to \XF\%. An LLM-as-judge analysis of these errors
 and a human check of the judge suggest that part of this drop comes from label noise and
 ambiguous headlines rather than model failure, although the judge and I agreed only
-moderately on which errors were which. The code, the new dataset and all results are public.\footnote{%
+slightly on which errors were which. The code, the new dataset and all results are public.\footnote{%
 \url{https://github.com/subbareddypullalacheruvu/fasttext-replication}}
 \end{abstract}
 
@@ -74,8 +74,9 @@ fastText's precision@1 and recall@1 equal accuracy. On AG News the paper reports
 character-level CNN of \citet{zhang2015character} reaches 87.2\% and their word n-gram TF-IDF
 model 92.4\%.
 
-\paragraph{Justification.} The paper appeared at EACL 2017, which is CORE-ranked~A
-\citep{icore2026} and is one of the three general NLP conferences alongside ACL and EMNLP.
+\paragraph{Justification.} The paper appeared at EACL 2017, which is ranked~A by ICORE
+\citep{icore2026} and is one of the four main conferences of the Association for
+Computational Linguistics, alongside ACL, NAACL and EMNLP.
 It has about 5,300 citations on Google Scholar (2026), and the official
 repository\footnote{\url{https://github.com/facebookresearch/fastText}} has about 26.5k
 stars. The code and data are freely available, and the experiments run on a laptop CPU,
@@ -83,9 +84,40 @@ so a full replication is feasible. One risk was that the repository was archived
 2024. Its last release (v0.9.2) still installs as \texttt{fasttext-wheel} on Python~3.11.
 
 % ===================================================================
-\section{The Original Dataset: AG News}
+\section{The Original Datasets}
 
-AG News \citep{zhang2015character} was built from a news corpus gathered by the
+\paragraph{All datasets in the paper.} The paper evaluates on the eight text classification
+datasets of \citet{zhang2015character}, listed in Table~\ref{tab:datasets}, and separately on
+tag prediction with YFCC100M, a set of almost 100 million Flickr images. For tag prediction
+it uses only the titles and captions: 91.2M training examples, 543k test examples and
+312k unique tags. I replicate AG News, the smallest of the classification datasets and the
+one whose news domain my new data continues. Replicating all eight was outside the time I
+had: the Amazon sets alone hold 3.6M training reviews each, and YFCC100M runs to 1.5 billion
+tokens.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lrrrc@{}}
+\toprule
+Dataset & Classes & Train & Test & Paper \\
+\midrule
+AG News & 4 & 120k & 7.6k & 92.5 \\
+Sogou News & 5 & 450k & 60k & 96.8 \\
+DBpedia & 14 & 560k & 70k & 98.6 \\
+Yelp Polarity & 2 & 560k & 38k & 95.7 \\
+Yelp Full & 5 & 650k & 50k & 63.9 \\
+Yahoo! Answers & 10 & 1.4M & 60k & 72.3 \\
+Amazon Full & 5 & 3.0M & 650k & 60.2 \\
+Amazon Polarity & 2 & 3.6M & 400k & 94.6 \\
+\bottomrule
+\end{tabular}
+\caption{The eight classification datasets used by \citet{joulin-etal-2017-bag}, from
+\citet{zhang2015character}. ``Paper'' is fastText's test accuracy (\%) with bigrams,
+$h=10$.}
+\label{tab:datasets}
+\end{table}
+
+\paragraph{AG News.} AG News \citep{zhang2015character} was built from a news corpus gathered by the
 ComeToMyHead academic search engine from more than 2,000 sources, mostly in 2004--2005. It has
 four balanced classes (World, Sports, Business, Sci/Tech), with 30,000 training and 1,900 test
 items per class (120,000 / 7,600 in total). Each item is a headline and a short description,
@@ -153,7 +185,7 @@ TF-IDF + LogReg & -- & \AGtf & \AGtfT\,s \\
 \bottomrule
 \end{tabular}
 \caption{AG News test accuracy (\%). ``Paper'' is Table~1 of
-\citet{joulin-etal-2017-bag}. Training time is wall-clock seconds on a laptop-class CPU.}
+\citet{joulin-etal-2017-bag}. Training time is wall-clock seconds on the same CPU machine (2 threads) for every model.}
 \label{tab:repl}
 \end{table}
 
@@ -163,8 +195,13 @@ reaches \AGbi\%, a gap of \AGgap{} points from the paper. The five seeds span
 from adding bigrams (+\AGbigramGain{} points, against +1.0 in the paper) also replicate. The
 small remaining difference is most likely due to random initialisation and thread
 scheduling. The paper reports a single run and does not give its seed or thread count. The
-\emph{efficiency} half of the claim also holds. The TF-IDF model is no more accurate
-(\AGtf\%) but takes about \AGspeedup{} times longer to train.
+paper's speed claim is made against deep models. Its Table~2 reports one training epoch on AG
+News taking 1\,h for the small char-CNN and 24\,min for the smallest VDCNN, against 1\,s for
+fastText. I did not rerun the deep models, but my fastText time agrees with the paper's:
+\AGbiT\,s for five epochs, about \AGperEpoch\,s per epoch. As an extra baseline the paper does not
+include, the TF-IDF model is only \AGtfGap{} points more accurate (\AGtf\%) but takes about
+\AGspeedup{} times longer to train. So fastText is fast compared with linear models too, not
+only compared with deep ones.
 
 \paragraph{Where it works and where it fails.} Recall is highest for Sports (\AGrecSports\%)
 and lowest for Business (\AGrecBusiness\%) and Sci/Tech (\AGrecSciTech\%). Most errors are
@@ -215,7 +252,14 @@ publication time and collection time. Two collection runs on 9~October 2026 prod
 unique items.
 
 \paragraph{Processing.} I strip HTML and feed boilerplate, and cut the description to its
-first sentence to match AG News. Duplicates are removed by link and by normalised headline.
+first sentence to match AG News. This did not always work. The Guardian's summaries often
+have no sentence break, and the feed truncates them at a fixed length, so 93 of the 508
+usable leads (84 of them from the Guardian) end mid-word or mid-sentence. Another 20
+Guardian leads still contain sign-up text (``Get our breaking news email\ldots''), which my
+boilerplate filter missed. Four items are promotions or carry no real headline (``Here's
+the latest.'', ``Find out more here'', ``Football Daily'', ``The Bottom Line''). The
+spot-check caught one of these, but I did not remove them. They are under 1\% of the data
+and are still included in the frozen version, so the reported results contain them. Duplicates are removed by link and by normalised headline.
 Then the same \texttt{normalize\_text} as for AG News is applied. Forty stories appeared in
 two different sections, for example both World and Business. Their label is ambiguous by
 construction, so I flag and exclude them. That leaves \textbf{508 usable items}: World 127,
@@ -257,7 +301,8 @@ available.
 
 \paragraph{Known limitations.} The dataset is small and comes from a single day. It is
 Anglophone (UK and US outlets). Source and class are confounded: ESPN contributes only Sports
-and NYT no Sports. Guardian descriptions often run past one sentence. I froze the dataset at
+and NYT no Sports. Guardian leads are often truncated or contain boilerplate, as described
+above. I froze the dataset at
 this version for the report rather than keep collecting.
 
 % ===================================================================
@@ -293,12 +338,18 @@ With the paper's AG News settings, fastText reaches only \NGpaper\% on 20~Newsgr
 8,769 documents is about 14 times fewer document updates than on AG News, and the learning
 rate decays to zero over those few updates. An epoch and learning-rate
 sweep (Figure~\ref{fig:sweep}) shows accuracy climbing to \NGbest\% at \NGbestEp{} epochs,
-lr\,=\,\NGbestLr. A higher learning rate (1.0) gets most of the way much sooner: 65.1\% after
+lr\,=\,\NGbestLr. This best setting was chosen on the test set (there is no separate
+development split), so \NGbest\% is optimistic. The gap to the untuned TF-IDF baseline is
+large enough that this does not change the conclusion. A higher learning rate (1.0) gets most of the way much sooner: 65.1\% after
 only 10 epochs and 2.8\,s. Either way, accuracy then plateaus \NGbestGap{} points below TF-IDF logistic regression
 (\NGtf\%). The \emph{speed} half of the claim survives: fastText still trains several times
-faster (\NGepT\,s against \NGtfT\,s at 25 epochs). The \emph{accuracy} half does not. On long
-documents averaging over many words dilutes the few informative ones, and the 10-dimensional
-hidden layer is too small for 20 overlapping classes. Hierarchical softmax costs accuracy
+faster (\NGepT\,s against \NGtfT\,s at 25 epochs). The \emph{accuracy} half does not. I tested
+one obvious explanation, that the 10-dimensional hidden layer is too small for 20 classes. It
+is not the cause. With dim\,=\,50 or 100, accuracy changes by at most \DimMaxChange{} points
+(25 epochs: \DimAx, \DimAl{} and \DimAc\%; lr\,=\,1.0 and 10 epochs: \DimBx, \DimBl{} and
+\DimBc\%, for dim 10, 50 and 100), while training takes almost three times longer. The more
+likely causes are that averaging over long documents dilutes the few informative words, and
+that the training set is small. Hierarchical softmax costs accuracy
 (\NGhs\% against \NGep\%) and saves almost no time. The paper uses it for tag prediction with
 hundreds of thousands of labels, not for 20 classes.
 
@@ -313,7 +364,7 @@ TF-IDF baseline.}
 
 \subsection{2026 headlines: a twenty-year shift}
 A model trained on AG News with the paper's settings reaches \XF\% $\pm$ \XFSD{} on the 2026
-headlines, a drop of \XFdrop{} points from its in-domain \AGbi\%. Recall falls in every
+headlines, a drop of \XFdrop{} points from its in-domain \AGbi\%. Five-seed mean recall falls in every
 class: World \XFrecWorld\%, Sports \XFrecSports\%, Business \XFrecBusiness\%, Sci/Tech
 \XFrecSciTech\%. Business is hit hardest, with recall falling from \AGrecBusiness\% to
 \XFrecBusiness\%. Figure~\ref{fig:cm} shows where accuracy is lost. The 2004 confusions
@@ -335,8 +386,9 @@ indicative only.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.78\textwidth]{confusion_agnews_vs_2026.png}
-\caption{The same AG News-trained model on the AG News test set and on the 2026 headlines.
-Row-normalised; the diagonal is per-class recall.}
+\caption{The same AG News-trained model (seed~0) on the AG News test set and on the 2026
+headlines. Row-normalised; the diagonal is per-class recall. The recall figures in the text
+are five-seed means, so they differ slightly from this single run.}
 \label{fig:cm}
 \end{figure*}
 
@@ -361,7 +413,8 @@ errors it found concentrate where the vocabulary changed: AI and technology stor
 files under World because of the word \emph{war}.
 
 \paragraph{Checking the judge.} I labelled a random 30 of the errors myself without seeing the
-judge's verdicts. We agreed on only \HumanAgree\% of them (Cohen's $\kappa$\,=\,\HumanKappa,
+judge's verdicts. I worked from a separate sheet with only the headline, lead, gold and
+predicted labels (in the repository), and the verdicts were merged in afterwards. We agreed on only \HumanAgree\% of them (Cohen's $\kappa$\,=\,\HumanKappa,
 slight to fair agreement), and on \HumanBinary\% for the simpler question of whether the error
 is the model's fault. The disagreements were systematic, not random. In 8 of the 16 cases the
 judge called the gold label correct while I called it label noise. They included three economy
@@ -414,7 +467,9 @@ study (\emph{Copyright Act 1968}, s\,40). Redistributing them in a public reposi
 separate question. I keep the text, with the source link on every row, only to make the
 results reproducible, and do not claim legal clearance. A version for wider publication
 should release links, labels and the collection script only, and let users re-collect the
-text, as is common for social-media datasets.
+text, as is common for social-media datasets. I break that rule myself for now: the full text
+is in the public repository so that the marker can reproduce every result. Once the unit is
+marked, I will replace the text columns with links.
 
 \emph{Respect: privacy.} The headlines name real people, including people involved in crime
 and court stories. The text is already public, but collecting it freezes stories that the
@@ -437,7 +492,8 @@ regenerated. Generative AI (Claude) also helped with code and drafting. I checke
 numbers and references and am responsible for them.
 
 \emph{Human research.} No human participants were involved. The only annotation was my own,
-of public text, so formal human research ethics review was not required.
+of public text, so under the \emph{National Statement on Ethical Conduct in Human Research}
+\citep{nhmrc2023national} no human research ethics review was required.
 
 % ===================================================================
 \section{Conclusions and Reflections}
@@ -460,7 +516,8 @@ thread count and platform from the first day. Rerunning everything in one batch 
 was the only way to get a consistent results file.
 
 \section*{Limitations}
-Replication covers AG News only, not all eight datasets of the original paper. The 2026
+Replication covers AG News only, not all eight datasets of the original paper, and the
+best 20~Newsgroups setting was chosen on the test set. The 2026
 dataset is small (508 usable items), comes from one day and four Anglophone outlets, and
 its labels come from feed sections checked on a 50-item sample by one person. The LLM judge
 is a single model in a single pass, and it agreed only weakly with my own judgements

@@ -50,12 +50,22 @@ leak the label. 20 classes, stratified 80/20 split (seed 42), about 262 tokens p
 * After tuning (`20ng_epoch_sweep.json`), fastText plateaus about 10 pp below the baseline.
   Speed survives (65% in 2.8 s, against 76.5% in 54.7 s); accuracy parity does not.
 * Hierarchical softmax costs 5 pp and saves almost no time with only 20 classes.
+* **Hidden size is not the cause** (`20ng_dim_sweep.json`, 5 seeds). With dim 10 / 50 / 100,
+  the 25-epoch setting gets 62.35 / 62.75 / 62.25% and lr 1.0 with 10 epochs gets
+  64.80 / 65.31 / 64.56%. A larger layer changes accuracy by under 0.6 pp and nearly triples
+  training time.
+* The best sweep setting (66.50%) was picked on the test split, because there is no dev
+  split, so it is optimistic. The 10 pp gap to the untuned baseline is far larger than this
+  bias.
 
 ## Phase 2b – new dataset: 2026 RSS headlines
 
 548 items from 15 RSS section feeds (BBC, Guardian, NYT, ESPN), collected on 9 October 2026.
 40 items appeared under two sections and are excluded, which leaves **508 usable**
-(World 127, Sports 135, Business 106, Sci/Tech 140). A manual spot-check of 50 items
+(World 127, Sports 135, Business 106, Sci/Tech 140). Known issues, kept in the frozen
+version: 93 leads (84 Guardian) are cut mid-sentence by the feed, 20 Guardian leads contain
+sign-up text, and 4 items are promotions with no real headline (ids 112, 183, 233, 280).
+A manual spot-check of 50 items
 against `data/labelling_guideline.md` found 45/50 = **90% agreement** with the automatic
 labels (`data/spotcheck_sample.csv`).
 

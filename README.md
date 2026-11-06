@@ -37,6 +37,7 @@ python src/download_data.py               # AG News + 20 Newsgroups -> data/raw/
 python src/preprocess.py all              # -> data/processed/*.train / *.test / *.all
 python src/run_experiments.py --seeds 5 --threads 2 --baselines   # Table: AG News, 20NG, 2026 in-domain
 python src/epoch_sweep.py --dataset 20ng --seeds 5                # why the paper's settings fail on 20NG
+python src/dim_sweep.py --seeds 5                                 # is the small hidden layer the cause? (no)
 python src/transfer_test.py --seeds 5                             # train on AG News, test on 2026 headlines
 python src/error_analysis.py ag_news_bigram                       # error examples -> results/errors_*.md
 python src/error_analysis.py 20ng_epoch25
@@ -60,6 +61,10 @@ change the judge results.
 | `data/labelling_guideline.md` | The rules each label is checked against |
 | `data/spotcheck_sample.csv` | The 50-item manual spot-check (45/50 = 90% agreement) |
 | `results/llm_judge/` | LLM-as-judge prompt, verdicts on the transfer-test errors, and a human check of 30 of them |
+
+**Known data issues, kept in the frozen version:** 93 of the 508 leads (84 Guardian) are cut
+mid-sentence by the feed. 20 Guardian leads contain sign-up text ("Get our breaking news
+email..."). 4 items are promotions with no real headline (ids 112, 183, 233, 280).
 
 Each item is a headline plus its lead sentence from one of 15 public RSS section feeds
 (BBC, The Guardian, The New York Times, ESPN), collected on 9 October 2026. Its label is the
@@ -85,6 +90,7 @@ src/
   preprocess.py        Python port of the authors' normalize_text; writes fastText format
   run_experiments.py   fastText + TF-IDF/LogReg baseline, multi-seed, timing
   epoch_sweep.py       epochs x learning-rate sweep (20NG)
+  dim_sweep.py         hidden-size (dim) check on 20NG
   transfer_test.py     AG News -> 2026 headlines temporal-shift test
   error_analysis.py    misclassified examples per class pair
   make_figures.py      figures for the report

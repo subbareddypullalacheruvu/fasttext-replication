@@ -40,6 +40,8 @@ for key, tag in [("ag_news_tfidf_lr", "AGtf"), ("20ng_tfidf_lr", "NGtf"), ("rss2
         put(tag + "Fone", R[key]["macro_f1_mean"], "{:.1f}")
 
 put("AGgap", R["ag_news_bigram"]["acc_mean"] - 92.5, "{:+.2f}")
+put("AGtfGap", R["ag_news_tfidf_lr"]["acc_mean"] - R["ag_news_bigram"]["acc_mean"], "{:.2f}")
+put("AGperEpoch", R["ag_news_bigram"]["train_s_mean"] / 5, "{:.1f}")
 put("AGuniGap", R["ag_news_unigram"]["acc_mean"] - 91.5, "{:+.2f}")
 put("AGbigramGain", R["ag_news_bigram"]["acc_mean"] - R["ag_news_unigram"]["acc_mean"], "{:.1f}")
 put("AGspeedup", R["ag_news_tfidf_lr"]["train_s_mean"] / R["ag_news_bigram"]["train_s_mean"], "{:.0f}")
@@ -52,6 +54,12 @@ put("NGbest", best["acc_mean"]); put("NGbestSD", best["acc_sd"])
 put("NGbestEp", best["epoch"], "{}"); put("NGbestLr", best["lr"], "{}")
 put("NGbestT", best["train_s"], "{:.1f}")
 put("NGbestGap", R["20ng_tfidf_lr"]["acc_mean"] - best["acc_mean"], "{:.1f}")
+
+D = json.load(open(RES / "20ng_dim_sweep.json"))
+for r in D:
+    tag = ("DimA" if r["epoch"] == 25 else "DimB") + {10: "x", 50: "l", 100: "c"}[r["dim"]]
+    put(tag, r["acc_mean"]); put(tag + "T", r["train_s"], "{:.1f}")
+put("DimMaxChange", max(abs(r["acc_mean"] - next(q["acc_mean"] for q in D if q["epoch"] == r["epoch"] and q["dim"] == 10)) for r in D), "{:.1f}")
 
 x = R["agnews_to_rss2026"]
 put("XF", x["acc_mean"]); put("XFSD", x["acc_sd"]); put("XFn", x["n_test"], "{}")

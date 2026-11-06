@@ -32,10 +32,11 @@ source outlet, so it could not judge by outlet.
 > label you would assign.
 > Headline + lead: {text}   Gold: {gold}   Predicted: {pred}
 
-**Human check.** 30 items (random, seed 1) are copied to `human_check.csv`. The LLM's
-verdict is in the last column (`llm_verdict`). **Hide that column before labelling.** Fill
-`human_verdict` for each row using the same three verdicts and the guideline, then run
-`python src/llm_judge_agreement.py`, which reports raw agreement and Cohen's kappa.
+**Human check.** 30 items (random, seed 1). The author labelled them from a separate sheet,
+`human_check_blank.csv`, which shows only the headline, lead sentence, gold label and
+predicted label, with no LLM verdicts. The author's answers (M / A / N) were then merged into
+`human_check.csv` next to the LLM verdicts. `python src/llm_judge_agreement.py` reports raw
+agreement and Cohen's kappa.
 
 **Limitations.** One judge model and one pass only, with no measured self-consistency. The
 judge may share the guideline author's biases, because the same guideline is given to
