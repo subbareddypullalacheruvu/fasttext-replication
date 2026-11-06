@@ -92,7 +92,7 @@ tag prediction with YFCC100M, a set of almost 100 million Flickr images. For tag
 it uses only the titles and captions: 91.2M training examples, 543k test examples and
 312k unique tags. I replicate AG News, the smallest of the classification datasets and the
 one whose news domain my new data continues. Replicating all eight was outside the time I
-had: the Amazon sets alone hold 3.6M training reviews each, and YFCC100M runs to 1.5 billion
+had: the two Amazon sets alone hold 3.0M and 3.6M training reviews, and YFCC100M runs to 1.5 billion
 tokens.
 
 \begin{table}[t]
@@ -347,7 +347,9 @@ faster (\NGepT\,s against \NGtfT\,s at 25 epochs). The \emph{accuracy} half does
 one obvious explanation, that the 10-dimensional hidden layer is too small for 20 classes. It
 is not the cause. With dim\,=\,50 or 100, accuracy changes by at most \DimMaxChange{} points
 (25 epochs: \DimAx, \DimAl{} and \DimAc\%; lr\,=\,1.0 and 10 epochs: \DimBx, \DimBl{} and
-\DimBc\%, for dim 10, 50 and 100), while training takes almost three times longer. The more
+\DimBc\%, for dim 10, 50 and 100), while training takes 2.4--2.8 times longer. These are
+separate runs from Table~\ref{tab:new} and the epoch sweep. Multi-threaded fastText is not
+bit-reproducible, so repeated runs of the same setting differ by a few tenths of a point. The more
 likely causes are that averaging over long documents dilutes the few informative words, and
 that the training set is small. Hierarchical softmax costs accuracy
 (\NGhs\% against \NGep\%) and saves almost no time. The paper uses it for tag prediction with

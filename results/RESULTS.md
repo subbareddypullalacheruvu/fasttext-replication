@@ -52,8 +52,9 @@ leak the label. 20 classes, stratified 80/20 split (seed 42), about 262 tokens p
 * Hierarchical softmax costs 5 pp and saves almost no time with only 20 classes.
 * **Hidden size is not the cause** (`20ng_dim_sweep.json`, 5 seeds). With dim 10 / 50 / 100,
   the 25-epoch setting gets 62.35 / 62.75 / 62.25% and lr 1.0 with 10 epochs gets
-  64.80 / 65.31 / 64.56%. A larger layer changes accuracy by under 0.6 pp and nearly triples
-  training time.
+  64.80 / 65.31 / 64.56%. A larger layer changes accuracy by under 0.6 pp and takes 2.4–2.8× longer
+  to train. These are separate runs from the main table: multi-threaded fastText is not
+  bit-reproducible, so repeated runs differ by a few tenths of a point.
 * The best sweep setting (66.50%) was picked on the test split, because there is no dev
   split, so it is optimistic. The 10 pp gap to the untuned baseline is far larger than this
   bias.
